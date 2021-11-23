@@ -1,20 +1,21 @@
 {% extends 'base.html' %} {% block content %}
 
-<h1>post List</h1>
+<h1>{{ post.title }}</h1>
 
 <div class="card">
     <div class="card-content">
         <span class="card-title">{{ post.title }}</span>
-        <p>Content: {{ post.content }}</p>
+
         <p>Description: {{ post.description }}</p>
         <p>Date: {{ post.date }}</p>
+        <img class="responsive-img card-panel" src="{{post.content}}">
 
     </div>
     <div class="card-action">
         <a href="{% url 'post_update' post.id %}">Edit</a>
         <a href="{% url 'post_delete' post.id %}">Delete</a>
     </div>
-    {% for photo in post.photo_set.all %}
+    <!-- {% for photo in post.photo_set.all %}
     <img class="responsive-img card-panel" src="{{photo.url}}">
     {% empty %}
     <div class="card-panel teal-text center-align">No Photos Uploaded</div>
@@ -24,6 +25,6 @@
         <input type="file" name="photo-file" />
         <br /><br />
         <input type="submit" class="btn" value="Upload Photo" />
-    </form>
+    </form> -->
 </div>
 {% endblock %}

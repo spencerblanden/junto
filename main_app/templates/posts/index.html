@@ -1,16 +1,22 @@
 {% extends 'base.html' %} {% block content %}
 
-<h1>post List</h1>
-
+<h1>{{user.username}}'s Posts</h1>
+<div class="card-container">
 {% for post in posts %}
-<div class="card">
-    <a href="{% url 'detail' post.id %}">
-        <div class="card-content">
-            <span class="card-title">{{ post.title }}</span>
-            <p>Content: {{ post.content }}</p>
-            <p>Description: {{ post.description }}</p>
+    <div class="card post-card">
+        <a href="{% url 'detail' post.id %}">
+            <div class="card-content">
+                <span class="card-title">{{ post.title }}</span>
+                {% if photo in post.photo_set.all %}
+                <img class="responsive-img card-panel" src="{{photo.url}}">
+                {% else %}
+                <img class="responsive-img card-panel" id="index-image" src="{{post.content}}">
+                {% endif %}
+                <p>Description: {{ post.description }}</p>
 
-        </div>
-    </a>
+            </div>
+        </a>
+    </div>
+{% endfor %}
 </div>
-{% endfor %} {% endblock %}
+{% endblock %}

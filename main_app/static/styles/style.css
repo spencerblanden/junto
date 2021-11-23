@@ -30,6 +30,20 @@ border: 3px solid rgb(186, 132, 86);
 .card-content{
 text-decoration: none;
 color: white;
+width: fit-content;
+}
+
+.card {
+max-width: 500px;  
+}
+
+.card-container {
+  display: flex;
+  width: fit-content;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: center;
 }
 
 .btn {
@@ -46,3 +60,8 @@ color: rgb(39, 49, 53);
 width: 150px;
 margin: 10px;
 }
+
+/* #index-image {
+  max-width: fit-content;
+
+} */
