@@ -18,7 +18,8 @@ def home(request):
 
 @login_required
 def profile(request):
-    return render(request, 'profile.html')
+  posts = Post.objects.all()
+  return render(request, 'posts/profile.html', { 'posts': posts })
 
 @login_required
 def posts_index(request):
@@ -64,7 +65,7 @@ def signup(request):
 
 class PostCreate(LoginRequiredMixin, CreateView):
   model = Post
-  fields = ['title', 'description', 'tags']
+  fields = ['title', 'content', 'description', 'tags']
   content = Photo.post
 
   def form_valid(self, form):
