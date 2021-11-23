@@ -11,7 +11,7 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
     />
-    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/style.css' %}" />
   </head>
   <body>
     <header class="navbar-fixed">
@@ -19,8 +19,9 @@
         <div class="nav-wrapper">
           <ul>
             <li>
-              <a href="/" class="left brand-logo">&nbsp;&nbsp;Junto</a>
-            </li>
+              <a href="/" class="left brand-logo">
+                <img class="logo" src="{% static 'assets/juntoLogo.svg' %}" alt="">
+              </a>            </li>
           </ul>
           <ul class="right">
             {% if user.is_authenticated %}
