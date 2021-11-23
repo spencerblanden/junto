@@ -5,6 +5,7 @@ from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
+from .forms import UserForm
 
 import uuid
 import boto3
@@ -28,8 +29,16 @@ def posts_index(request):
 
 @login_required
 def posts_detail(request, post_id):
-  post = Post.objects.get(id=post_id)
-  return render(request, 'posts/detail.html', { 'post': post })
+    post = Post.objects.get(id=post_id)
+
+    user_form = UserForm()
+
+    return render(
+        request, 
+        'posts/detail.html', { 
+            'post': post,
+            'user_form': user_form,
+        })
 
 @login_required
 def add_photo(request, post_id):
@@ -44,6 +53,16 @@ def add_photo(request, post_id):
             photo.save()
         except:
             print('An error occurred uploading file to S3')
+    return redirect('detail', post_id=post_id)
+
+def add_category(request, post_id):
+    form = UserForm(request.POST)
+    print(form._errors)
+    if form.is_valid():
+        new_category = form.save(commit=False)
+        new_category.post_id = post_id
+        new_category.save()
+
     return redirect('detail', post_id=post_id)
 
 
@@ -65,8 +84,7 @@ def signup(request):
 
 class PostCreate(LoginRequiredMixin, CreateView):
   model = Post
-  fields = ['title', 'content', 'description', 'tags']
-  content = Photo.post
+  fields = ['title', 'content', 'description']
 
   def form_valid(self, form):
     form.instance.user = self.request.user  # form.instance is the cat
