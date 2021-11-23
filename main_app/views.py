@@ -64,7 +64,8 @@ def signup(request):
 
 class PostCreate(LoginRequiredMixin, CreateView):
   model = Post
-  fields = ['title', 'content', 'description', 'tags']
+  fields = ['title', 'description', 'tags']
+  content = Photo.post
 
   def form_valid(self, form):
     form.instance.user = self.request.user  # form.instance is the cat
