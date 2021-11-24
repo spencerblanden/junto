@@ -18,27 +18,36 @@
     </div>
 </div>
     <div class="col s6">
+        {% if category.name in post.category_set.all   %}
+        {% else %}
         <form action="{% url 'add_category' post.id %}" method="post">
             {% csrf_token %}
             {{ user_form.as_p }}
-            <input class="btn green" type="submit" value="Add Feeding">
+            <input class="btn green" type="submit" value="Add Catedory">
         </form>
+        {% endif %}
         <table class="striped">
             <thead>
                 <tr>
-                    <th>Title</th>
+                    <th>Tags</th>
                 </tr>
             </thead>
             <tbody>
                 {% for category in post.category_set.all %}
                     <tr>
-                        <td>{{ category.name }}</td>
+                        <td>{{ category.get_name_display }}</td>
                     </tr>
                 {% endfor %}
             </tbody>
         </table>
     </div>
-        
+    <br/><br />
+    <hr>
+    <form action="{% url 'like_post' post.pk %}" method='POST'>
+        {% csrf_token %}
+        <button type='submit' name='post_id' value='{{ post.id }}' class='btn btn-primary btn-sm'>like</button>
+        {{ post.total_likes }} - Likes 
+    </form>
 
 
     <!-- {% for photo in post.photo_set.all %}
@@ -55,6 +64,6 @@
     <script>
      var selectEl = document.getElementById('id_name');
      M.FormSelect.init(selectEl);
-  
+        
     </script>
 {% endblock %}

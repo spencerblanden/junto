@@ -1,4 +1,5 @@
-from django.shortcuts import render, redirect
+from django.http.response import  HttpResponseRedirect
+from django.shortcuts import get_object_or_404, render, redirect
 from .models import Post, Photo
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.contrib.auth import login
@@ -6,6 +7,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .forms import UserForm
+from django.urls import reverse
 
 import uuid
 import boto3
@@ -30,7 +32,6 @@ def posts_index(request):
 @login_required
 def posts_detail(request, post_id):
     post = Post.objects.get(id=post_id)
-
     user_form = UserForm()
 
     return render(
@@ -39,6 +40,13 @@ def posts_detail(request, post_id):
             'post': post,
             'user_form': user_form,
         })
+
+def get_context_data(self, *args, **kwargs):
+    context=super(posts_detail, self).get_context_data
+    stuff=get_object_or_404(Post, id=self.kwargs['post_id'])
+    total_likes=stuff.total_likes()
+    context['total_likes']=total_likes
+    return context
 
 @login_required
 def add_photo(request, post_id):
@@ -80,7 +88,10 @@ def signup(request):
   context = {'form': form, 'error_message': error_message}
   return render(request, 'registration/signup.html', context)
 
-
+def LikeView(request, post_id):
+    post= get_object_or_404(Post, id=request.POST.get('post_id'))
+    post.likes.add(request.user)
+    return HttpResponseRedirect(reverse('detail', args=[str(post_id)]))
 
 class PostCreate(LoginRequiredMixin, CreateView):
   model = Post

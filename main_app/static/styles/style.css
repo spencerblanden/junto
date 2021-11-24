@@ -17,6 +17,11 @@ padding-top: 0;
 text-align: right;
 }
 
+#nav-adjust {
+  height: 100px; 
+  line-height: 100px;
+}
+
 .nav-wrapper {
 background-color: rgb(25, 170, 181);
 }

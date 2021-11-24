@@ -13,7 +13,14 @@
                 <img class="responsive-img card-panel" id="index-image" src="{{post.content}}">
                 {% endif %}
                 <p>Description: {{ post.description }}</p>
-
+                {{ post.total_likes }} - Likes 
+                <tbody>
+                    {% for category in post.category_set.all %}
+                        <tr>
+                            <td>{{ category.get_name_display }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
             </div>
         </a>
     </div>
