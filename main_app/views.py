@@ -9,8 +9,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from .forms import UserForm
 from django.urls import reverse
 
-import uuid
-import boto3
+
 
 
 
