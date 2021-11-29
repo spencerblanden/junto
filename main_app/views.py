@@ -1,6 +1,6 @@
 from django.http.response import  HttpResponseRedirect
 from django.shortcuts import get_object_or_404, render, redirect
-from .models import Post, Photo
+from .models import Post
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
