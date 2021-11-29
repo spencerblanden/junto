@@ -121,7 +121,7 @@ USE_TZ = True
 
 LOGIN_REDIRECT_URL = '/posts/'
 LOGOUT_REDIRECT_URL = '/'
-
+STATIC_ROOT = BASE_DIR / 'staticfiles'
 STATIC_URL = '/static/'
 
 
