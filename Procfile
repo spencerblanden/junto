@@ -1,1 +1,1 @@
-web:python junto.py
+web: gunicorn junto.wsgi
