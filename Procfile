@@ -1,1 +1,1 @@
-web: python junto.py
+web:python junto.py
