@@ -1,1 +1,1 @@
-web: python yourfile.py
+web: python manage.py
