@@ -1,5 +1,25 @@
 {% extends 'base.html' %} {% block content %}
-    <h1>About the Junto</h1>
-    <hr />
+{% load static %}
+    <h1>Welcome to the Junto</h1>
     
+    <hr />
+<div class="about">
+    <div class="card aboutInfo">
+        <p>In 1727, Ben Franklin started The Junto, a writing group aimed at helping the members make self-improvements.
+            The literal definition is: “a group of persons joined for a common purpose.”
+            In 2021 Junto is being re-established as a social forum for developer collaboration.
+            
+        </p>
+        <p class="juntoPhrase">Junto is the endpoint of all your coding questions.</p>
+    </div>
+    <img src="{% static 'assets/junto_old.jpeg' %}" id="oldLogo" alt="">
+</div>
+<div class="splashButton">
+    <div id="signUpText">
+        <h3>Signup for the Junto now!</h3>
+    </div>
+    <div>
+        <button class="btn-large" ><a href="{% url 'signup' %}" id="signupButton">Signup</a></button>
+    </div>
+</div>  
 {% endblock %}
