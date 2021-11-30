@@ -1,0 +1,75 @@
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  background-color: rgb(39, 49, 53);
+  color: white;
+}
+
+main {
+flex: 1 0 auto;
+
+}
+
+footer.page-footer {
+background-color: rgb(25, 170, 181);
+padding-top: 0;
+text-align: right;
+}
+
+#nav-adjust {
+  height: 100px; 
+  line-height: 100px;
+}
+
+.nav-wrapper {
+background-color: rgb(25, 170, 181);
+}
+
+
+.card, .card-panel {
+background-color: rgb(39, 49, 53);
+border: 3px solid rgb(186, 132, 86);
+}
+
+.card-content{
+text-decoration: none;
+color: white;
+width: fit-content;
+}
+
+.card {
+max-width: 500px;  
+}
+
+.card-container {
+  display: flex;
+  width: fit-content;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: center;
+}
+
+.btn {
+background-color: rgb(39, 49, 53);
+border: 3px solid rgb(186, 132, 86);
+}
+
+.btn:hover {
+background-color: rgb(139, 197, 111);
+color: rgb(39, 49, 53);
+}
+
+.logo {
+width: 150px;
+margin: 10px;
+}
+
+.white-text {
+  color: white;
+}
+/* #index-image {
+  max-width: fit-content;
+
+} */
