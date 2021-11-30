@@ -66,6 +66,9 @@ width: 150px;
 margin: 10px;
 }
 
+.white-text {
+  color: white;
+}
 /* #index-image {
   max-width: fit-content;
 
