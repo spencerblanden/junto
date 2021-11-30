@@ -2,6 +2,7 @@
 """Django's command-line utility for administrative tasks."""
 import os
 import sys
+# sys.setrecursionlimit(2000) # max depth of recursion
 
 
 def main():

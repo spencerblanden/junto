@@ -1,0 +1,149 @@
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  background-color: rgb(39, 49, 53);
+  color: white;
+}
+
+main {
+flex: 1 0 auto;
+}
+
+#editDeletebtns {
+  color: rgb(186, 132, 86);
+}
+
+footer.page-footer {
+background-color: rgb(25, 170, 181);
+padding-top: 0;
+text-align: right;
+}
+
+#nav-adjust {
+  height: 100px; 
+  line-height: 100px;
+}
+
+.nav-wrapper {
+background-color: rgb(25, 170, 181);
+}
+
+.btn-primary {
+  margin: 10px;
+}
+
+.card, .card-panel {
+background-color: rgb(39, 49, 53);
+border: 3px solid rgb(186, 132, 86);
+}
+
+.post-card {
+  height: fit-content;
+  min-width: 200px;
+}
+
+.card-content{
+text-decoration: none;
+color: white;
+width: fit-content;
+}
+
+.card {
+max-width: 500px;  
+}
+
+.card-container {
+  display: flex;
+  width: fit-content;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: center;
+  height: fit-content;
+}
+
+.btn, .btn-large{
+background-color: rgb(25, 170, 181);
+border: 3px solid rgb(186, 132, 86);
+color: rgb(39, 49, 53);
+text-decoration: none;
+}
+
+.btn:hover, .btn-large:hover {
+background-color:rgb(253, 253, 253);;
+}
+
+.formFields {
+  color: white;
+}
+
+#id_title, 
+#id_content, 
+#id_description, 
+#id_date, 
+#id_username, 
+#id_password,
+#id_password1,
+#id_password2 {
+  color: white;
+}
+
+.logo {
+  margin: 10px;
+}
+
+#oldLogo {
+  width: 250px;
+  border-radius: 50%;
+  height: fit-content;
+  margin: 20px;
+}
+
+.aboutInfo {
+  padding: 15px;
+  font-size: 18px;
+}
+
+.about {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: space-between;
+
+}
+
+.juntoPhrase {
+  color:rgb(25, 170, 181);
+  font-size: 20px;
+}
+
+#signupButton {
+  text-decoration: none;
+  color: black;
+}
+
+.splashButton {
+  width: 100%;
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 3px solid rgb(186, 132, 86);
+  padding-bottom: 20px;
+}
+
+#signUpText {
+  padding: 10px;
+  text-align: center;
+}
+
+.select-dropdown {
+  color: white;
+}
+
+@media only screen and (max-width: 1172px) {
+  .about {
+    justify-content: center;
+  }
+}
