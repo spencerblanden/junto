@@ -7,7 +7,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .forms import UserForm
-from django.urls import reverse
+from django.urls import reverse_lazy
 
 
 
@@ -18,14 +18,16 @@ def home(request):
   return render(request, 'home.html')
 
 @login_required
-def profile(request):
+def posts_index(request):
   posts = Post.objects.all()
-  return render(request, 'posts/profile.html', { 'posts': posts })
+  class Meta:
+    ordering = ['-id']
+  return render(request, 'posts/index.html', { 'posts': posts })
 
 @login_required
-def posts_index(request):
+def profile(request):
     posts = Post.objects.filter(user=request.user)
-    return render(request, 'posts/index.html', { 'posts': posts })
+    return render(request, 'posts/profile.html', { 'posts': posts })
 
 @login_required
 def posts_detail(request, post_id):
@@ -75,7 +77,7 @@ def signup(request):
 def LikeView(request, post_id):
     post= get_object_or_404(Post, id=request.POST.get('post_id'))
     post.likes.add(request.user)
-    return HttpResponseRedirect(reverse('detail', args=[str(post_id)]))
+    return redirect('index')
 
 class PostCreate(LoginRequiredMixin, CreateView):
   model = Post
