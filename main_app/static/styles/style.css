@@ -29,10 +29,18 @@ text-align: right;
 background-color: rgb(25, 170, 181);
 }
 
+.btn-primary {
+  margin: 10px;
+}
 
 .card, .card-panel {
 background-color: rgb(39, 49, 53);
 border: 3px solid rgb(186, 132, 86);
+}
+
+.post-card {
+  height: fit-content;
+  min-width: 200px;
 }
 
 .card-content{
@@ -52,16 +60,18 @@ max-width: 500px;
   flex-wrap: wrap;
   gap: 30px;
   justify-content: center;
+  height: fit-content;
 }
 
-.btn {
-background-color: rgb(39, 49, 53);
+.btn, .btn-large{
+background-color: rgb(25, 170, 181);
 border: 3px solid rgb(186, 132, 86);
+color: rgb(39, 49, 53);
+text-decoration: none;
 }
 
-.btn:hover {
-background-color: rgb(139, 197, 111);
-color: rgb(39, 49, 53);
+.btn:hover, .btn-large:hover {
+background-color:rgb(253, 253, 253);;
 }
 
 .formFields {
@@ -78,7 +88,57 @@ color: rgb(39, 49, 53);
 #id_password2 {
   color: white;
 }
-/* #index-image {
-  max-width: fit-content;
 
-} */
+.logo {
+  margin: 10px;
+}
+
+#oldLogo {
+  width: 250px;
+  border-radius: 50%;
+  height: fit-content;
+  margin: 20px;
+}
+
+.aboutInfo {
+  padding: 15px;
+  font-size: 18px;
+}
+
+.about {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: space-between;
+
+}
+
+.juntoPhrase {
+  color:rgb(25, 170, 181);
+  font-size: 20px;
+}
+
+#signupButton {
+  text-decoration: none;
+  color: black;
+}
+
+.splashButton {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 3px solid rgb(186, 132, 86);
+  padding-bottom: 20px;
+}
+
+#signUpText {
+  padding: 10px;
+  text-align: center;
+}
+
+@media only screen and (max-width: 1172px) {
+  .about {
+    justify-content: center;
+  }
+}

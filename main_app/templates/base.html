@@ -22,13 +22,14 @@
             <li>
               <a href="/" class="left brand-logo">
                 <img class="logo" src="{% static 'assets/juntoLogo.svg' %}" style= "width:100px" alt="">
-              </a>            </li>
+              </a>            
+            </li>
           </ul>
           <ul class="right">
             {% if user.is_authenticated %}
-            <li><a href="{% url 'profile' %}">Junto</a></li>
+            <li><a href="{% url 'index' %}">Junto</a></li>
             <li><a href="{% url 'posts_create' %}">Add a Post</a></li>
-            <li><a href="{% url 'index' %}">My Profile</a></li>
+            <li><a href="{% url 'profile' %}">My Profile</a></li>
             <li><a href="{% url 'logout' %}">Log Out</a></li>
             {% else %}
             <li><a href="{% url 'login' %}">Log In</a></li>
@@ -41,7 +42,7 @@
     <main class="container">{% block content %} {% endblock %}</main>
     <footer class="page-footer">
       <div class="right">
-        All Rights Reserved, &copy; 2019 Junto &nbsp;
+        All Rights Reserved, &copy; 2021 Junto &nbsp;
       </div>
     </footer>
   </body>

@@ -33,6 +33,9 @@ class Post(models.Model):
     def get_absolute_url(self):
         return reverse('detail', kwargs={'post_id': self.id})
 
+    class Meta:
+        ordering = ['-id']
+
 class Category(models.Model):
     name = models.CharField(
         max_length=1,
