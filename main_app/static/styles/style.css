@@ -8,7 +8,10 @@ body {
 
 main {
 flex: 1 0 auto;
+}
 
+#editDeletebtns {
+  color: rgb(186, 132, 86);
 }
 
 footer.page-footer {
@@ -61,11 +64,20 @@ background-color: rgb(139, 197, 111);
 color: rgb(39, 49, 53);
 }
 
-.logo {
-width: 150px;
-margin: 10px;
+.formFields {
+  color: white;
 }
 
+#id_title, 
+#id_content, 
+#id_description, 
+#id_date, 
+#id_username, 
+#id_password,
+#id_password1,
+#id_password2 {
+  color: white;
+}
 /* #index-image {
   max-width: fit-content;
 
