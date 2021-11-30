@@ -138,6 +138,10 @@ background-color:rgb(253, 253, 253);;
   text-align: center;
 }
 
+.select-dropdown {
+  color: white;
+}
+
 @media only screen and (max-width: 1172px) {
   .about {
     justify-content: center;
