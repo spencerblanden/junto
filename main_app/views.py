@@ -13,6 +13,7 @@ from django.urls import reverse_lazy
 
 
 
+
 # Define the home view
 def home(request):
   return render(request, 'home.html')
@@ -20,8 +21,7 @@ def home(request):
 @login_required
 def posts_index(request):
   posts = Post.objects.all()
-  class Meta:
-    ordering = ['-id']
+  
   return render(request, 'posts/index.html', { 'posts': posts })
 
 @login_required
