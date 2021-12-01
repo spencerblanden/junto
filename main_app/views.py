@@ -1,6 +1,6 @@
 from django.http.response import  HttpResponseRedirect
 from django.shortcuts import get_object_or_404, render, redirect
-from .models import Post
+from .models import Post, Category
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
@@ -33,7 +33,6 @@ def profile(request):
 def posts_detail(request, post_id):
     post = Post.objects.get(id=post_id)
     user_form = UserForm()
-
     return render(
         request, 
         'posts/detail.html', { 
@@ -51,13 +50,12 @@ def get_context_data(self, *args, **kwargs):
 
 def add_category(request, post_id):
     form = UserForm(request.POST)
-    print(form._errors)
     if form.is_valid():
         new_category = form.save(commit=False)
         new_category.post_id = post_id
         new_category.save()
-
     return redirect('detail', post_id=post_id)
+
 
 
 def signup(request):

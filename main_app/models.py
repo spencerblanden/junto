@@ -23,6 +23,8 @@ class Post(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     likes = models.ManyToManyField(User, related_name='blog_post')
     
+   
+
     def total_likes(self):
         return self.likes.count()
 
@@ -44,6 +46,9 @@ class Category(models.Model):
     )
     post = models.ForeignKey(Post, on_delete=models.CASCADE)
 
-
     def __str__(self):
+        
         return (self.get_name_display())
+
+    class Meta:
+        ordering = ['-id']
