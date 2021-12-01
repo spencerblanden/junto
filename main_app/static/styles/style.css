@@ -85,7 +85,10 @@ background-color:rgb(253, 253, 253);;
 #id_username, 
 #id_password,
 #id_password1,
-#id_password2 {
+#id_password2,
+#id_name,
+#id_avatar,
+#id_bio {
   color: white;
 }
 
@@ -142,7 +145,27 @@ background-color:rgb(253, 253, 253);;
   color: white;
 }
 
+#hrefName {
+  text-decoration: none;
+  color: white;
+}
 
+.profileHeading {
+  display: flex;
+}  
+
+.bio {
+  padding: 0 20px 20px 20px;
+}
+
+#profilePhoto {
+  width: 200px;
+  margin: 20px;
+}
+
+#profileContainer {
+  width: 100%;
+}
 
 @media only screen and (max-width: 1172px) {
   .about {

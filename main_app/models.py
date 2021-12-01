@@ -1,6 +1,7 @@
 from django.db import models
 import datetime
 from django import forms
+from django.db.models.deletion import CASCADE
 # from django.forms import widgets, TextInput
 from django.urls import reverse
 from django.contrib.auth.models import User
@@ -12,9 +13,19 @@ TITLES = (
 )
 
 
+class Profile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    avatar = models.CharField(max_length=250)
+    name = models.CharField(max_length=50)
+    bio = models.TextField(max_length=250)
+
+    def __str__(self):
+        return self.name
+
+    def get_absolute_url(self):
+        return reverse('profile_detail', kwargs={'pk': self.id})
 
 
-# Create your models here.
 class Post(models.Model):
     title = models.CharField(max_length=50)
     content = models.TextField(max_length=250)
@@ -22,8 +33,7 @@ class Post(models.Model):
     date = models.DateField(("Date"), default=datetime.date.today)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     likes = models.ManyToManyField(User, related_name='blog_post')
-    
-   
+    profile = models.ForeignKey(Profile, on_delete=CASCADE, default=1)
 
     def total_likes(self):
         return self.likes.count()
@@ -52,3 +62,4 @@ class Category(models.Model):
 
     class Meta:
         ordering = ['-id']
+
