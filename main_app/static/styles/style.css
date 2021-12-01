@@ -125,6 +125,7 @@ background-color:rgb(253, 253, 253);;
 
 .splashButton {
   width: 100%;
+  margin: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -137,8 +138,19 @@ background-color:rgb(253, 253, 253);;
   text-align: center;
 }
 
+.select-dropdown {
+  color: white;
+}
+
+
+
 @media only screen and (max-width: 1172px) {
   .about {
     justify-content: center;
   }
+
+}
+
+@media only screen and (max-width: 700px) {
+
 }
