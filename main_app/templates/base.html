@@ -1,78 +1,79 @@
 {% load static %}
 
+
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Junto</title>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
-    />
-    <link rel="stylesheet" type="text/css" href="{% static 'styles/style.css' %}" />
 
-  </head>
-  <body>
-    <header class="navbar-fixed">
-      <nav >
-        <div class="nav-wrapper" >
-          <ul>
-            <li>
-              <a href="/" class="left brand-logo">
-                <img class="logo" src="{% static 'assets/juntoLogo.svg' %}" style= "width:100px" alt="">
-              </a>   
-              
-            </li>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Junto</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
+  <link rel="stylesheet" type="text/css" href="{% static 'styles/style.css' %}" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+</head>
+
+<body>
+  <header class="navbar-fixed">
+    <nav>
+      <div class="nav-wrapper">
+        <ul>
+          <li>
+            <a href="/" class="left brand-logo">
+              <img class="logo" src="{% static 'assets/juntoLogo.svg' %}" style="width:100px" alt="">
+            </a>
+          </li>
+        </ul>
+        <a href="#" data-target="mobile-demo" class="right sidenav-trigger"><i class="material-icons">menu</i></a>
+        <div>         
+          <ul class="right hide-on-med-and-down">
+            {% if user.is_authenticated %}
+            <li><a href="{% url 'index' %}">Junto</a></li>
+            <li><a href="{% url 'posts_create' %}">Add a Post</a></li>
+            <li><a href="{% url 'profile' %}">My Posts</a></li>
+            {% if user.profile %}
+            <li><a href="{% url 'profile_detail' user.id %}">My Profile</a></li>
+            {% else %}
+            <li><a href="{% url 'profile_create' %}">Create Profile</a></li>
+            {% endif %}
+            <li><a href="{% url 'logout' %}">Log Out</a></li>
+            {% else %}
+            <li><a href="{% url 'login' %}">Log In</a></li>
+            <li><a href="{% url 'signup' %}">Sign Up</a></li>
+            {% endif %}
           </ul>
-            <a href="#" data-target="mobile-demo" class="right sidenav-trigger"><i class="material-icons">menu</i></a>
-          <div>
-            
-            <ul class="right hide-on-med-and-down">
-              {% if user.is_authenticated %}
-              <li><a href="{% url 'index' %}">Junto</a></li>
-              <li><a href="{% url 'posts_create' %}">Add a Post</a></li>
-              <li><a href="{% url 'profile' %}">My Profile</a></li>
-              <li><a href="{% url 'logout' %}">Log Out</a></li>
-              {% else %}
-              <li><a href="{% url 'login' %}">Log In</a></li>
-              <li><a href="{% url 'signup' %}">Sign Up</a></li>
-              {% endif %}
-            </ul>
-            
-          </div>
-          
         </div>
-
-      </nav>
-      <ul class="sidenav right" id="mobile-demo">
-        {% if user.is_authenticated %}
-        <li><a href="{% url 'index' %}">Junto</a></li>
-        <li><a href="{% url 'posts_create' %}">Add a Post</a></li>
-        <li><a href="{% url 'profile' %}">My Profile</a></li>
-        <li><a href="{% url 'logout' %}">Log Out</a></li>
-        {% else %}
-        <li><a href="{% url 'login' %}">Log In</a></li>
-        <li><a href="{% url 'signup' %}">Sign Up</a></li>
-        {% endif %}
-      </ul>
-      
-    </header>
-    <main class="container">{% block content %} {% endblock %}</main>
-    <footer class="page-footer">
-      <div class="right">
-        All Rights Reserved, &copy; 2021 Junto &nbsp;
       </div>
-    </footer>
-    </body>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    </nav>
+  </header>
+  <ul class="sidenav right" id="mobile-demo">
+    {% if user.is_authenticated %}
+    <li><a href="{% url 'index' %}">Junto</a></li>
+    <li><a href="{% url 'posts_create' %}">Add a Post</a></li>
+    <li><a href="{% url 'profile' %}">My Posts</a></li>
+    <li><a href="{% url 'profile_detail' user.id %}">My Profile</a></li>
+    <li><a href="{% url 'logout' %}">Log Out</a></li>
+    {% else %}
+    <li><a href="{% url 'login' %}">Log In</a></li>
+    <li><a href="{% url 'signup' %}">Sign Up</a></li>
+    {% endif %}
+  </ul>
+  <main class="container">{% block content %} {% endblock %}</main>
+  <footer class="page-footer">
+    <div class="right">
+      All Rights Reserved, &copy; 2021 Junto &nbsp;
+    </div>
+  </footer>
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<script src="{% static 'js/main.js' %}"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    var elems = document.querySelectorAll('.sidenav');
+    var instances = M.Sidenav.init(elems, {});
+  });
+</script>
 
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      var elems = document.querySelectorAll('.sidenav');
-      var instances = M.Sidenav.init(elems, {});
-    });
-  </script>
 </html>

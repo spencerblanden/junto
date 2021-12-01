@@ -6,13 +6,13 @@
             <div class="card post-card">
                 <a href="{% url 'detail' post.id %}">
                     <div class="card-content">
-                        <span class="card-title">{{ post.title }}</span>
+                        <span class="card-title" style="color: white;">{{ post.title }}</span>
                         {% if photo in post.photo_set.all %}
                         <img class="responsive-img card-panel" src="{{photo.url}}">
                         {% else %}
                         <img class="responsive-img card-panel" id="index-image" src="{{post.content}}">
                         {% endif %}
-                        <h5>{{ post.user.username }}</h5>
+                        <h5 ><a href="{% url 'profile_detail' post.user.id %}" style="color: white;">{{ post.user.username }}</a></h5>
                         <p>{{ post.description }}</p>
                         
                     </div>
