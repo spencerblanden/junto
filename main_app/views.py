@@ -81,10 +81,10 @@ def LikeView(request, post_id):
 
 def profile_detail(request, pk):
   profile = Profile.objects.get(id=pk)
-  user = profile.user
+  user = profile.user.id
   # post = Post.objects.get(id__in=user.post.all().values_list('id'))
-  post = Post.objects.filter(id=pk)
-
+  post = Post.objects.filter(user=pk)
+  
   return render(
     request, 
     'registration/user_profile.html', {

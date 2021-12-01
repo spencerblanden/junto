@@ -14,24 +14,23 @@
             </div>
                 <a href="{% url 'profile_update' user.id %}" id="editDeletebtns">Edit</a>
             <div class="card-container">
-                {% for posts in profile.post %}
+                {% for posts in post %}
                     <div class="card post-card">
-                        <!-- <a href="{% url 'detail' post.id %}"> -->
+
                             <div class="card-content">
-                                <span class="card-title">{{ user.get_posts.title }}</span>
-                                {% if photo in post.photo_set.all %}
-                                <img class="responsive-img card-panel" src="{{photo.url}}">
+                                <span class="card-title">{{ posts.title }}</span>
+                                {% if photo in posts.photo_set.all %}
+                                <img class="responsive-img card-panel" src="{{posts.photo.url}}">
                                 {% else %}
-                                <img class="responsive-img card-panel" id="index-image" src="{{post.content}}">
+                                <img class="responsive-img card-panel" id="index-image" src="{{posts.content}}">
                                 {% endif %}
-                                <h5>{{ post.user.username }}</h5>
-                                <p>{{ post.description }}</p>
-                                
+                                <h5 ><a href="{% url 'profile_detail' posts.user.id %}" style="color: white;">{{ post.user.username }}</a></h5>
+                                <p>{{ posts.description }}</p> 
                             </div>
                         </a>
-                        <form action="{% url 'like_post' post.pk %}" method='POST'>
+                        <form action="{% url 'like_post' posts.pk %}" method='POST'>
                             {% csrf_token %}
-                            <button type='submit' name='post_id' value='{{ post.id }}' class='btn btn-primary btn-sm'>like</button>
+                            <button type='submit' name='post_id' value='{{ posts.id }}' class='btn btn-primary btn-sm'>like</button>
                             {{ post.total_likes }} - Likes 
                         </form>
                     </div>
