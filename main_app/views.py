@@ -1,6 +1,7 @@
 from django.http.response import  HttpResponseRedirect
 from django.shortcuts import get_object_or_404, render, redirect
-from .models import Post, Category
+from django.views.generic.detail import DetailView
+from .models import Post, Category, Profile
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
@@ -8,6 +9,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .forms import UserForm
 from django.urls import reverse_lazy
+from django.contrib.auth.models import User
 
 
 
@@ -65,7 +67,7 @@ def signup(request):
     if form.is_valid():
       user = form.save()
       login(request, user)
-      return redirect('index')
+      return redirect('profile_create')
     else:
       error_message = 'Invalid sign up - try again'
   form = UserCreationForm()
@@ -76,6 +78,20 @@ def LikeView(request, post_id):
     post= get_object_or_404(Post, id=request.POST.get('post_id'))
     post.likes.add(request.user)
     return redirect('index')
+
+def profile_detail(request, pk):
+  profile = Profile.objects.get(id=pk)
+  user = profile.user
+  # post = Post.objects.get(id__in=user.post.all().values_list('id'))
+  post = Post.objects.filter(id=pk)
+
+  return render(
+    request, 
+    'registration/user_profile.html', {
+      'profile' : profile,
+      'post' : post,
+    })
+
 
 class PostCreate(LoginRequiredMixin, CreateView):
   model = Post
@@ -92,3 +108,18 @@ class PostUpdate(LoginRequiredMixin, UpdateView):
 class PostDelete(LoginRequiredMixin, DeleteView):
   model = Post
   success_url = '/posts/'
+
+class ProfileCreate(CreateView):
+  model = Profile
+  fields = ['name', 'avatar', 'bio']
+
+  def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super().form_valid(form)
+
+class ProfileUpdate(UpdateView):
+  model = Profile
+  fields = ['name', 'avatar', 'bio']
+
+
+
