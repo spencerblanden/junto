@@ -1,6 +1,9 @@
 {% extends 'base.html' %} {% block content %}
 {% load static %}
-    <h1>Welcome to the Junto</h1>
+<div class="homeTitle">
+    <h1>Welcome to the Junto </h1>
+    <img src="{% static 'assets/junto_old.jpeg' %}" id="oldLogo" alt="">
+</div>
     <hr />
 <div class="about">
     <div class="card aboutInfo">
@@ -11,7 +14,6 @@
         </p>
         <p class="juntoPhrase">Junto is the endpoint of all your coding questions.</p>
     </div>
-    <img src="{% static 'assets/junto_old.jpeg' %}" id="oldLogo" alt="">
 </div>
 <div class="splashButton" id="homeCard">
     <div id="signUpText">

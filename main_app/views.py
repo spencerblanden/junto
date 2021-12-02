@@ -123,3 +123,6 @@ class ProfileUpdate(UpdateView):
 
 
 
+
+print('Hello World!')
+
