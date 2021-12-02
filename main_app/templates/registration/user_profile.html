@@ -22,7 +22,7 @@
                     <div class="card post-card">
 
                             <div class="card-content">
-                                <span class="card-title">{{ posts.title }}</span>
+                                <a href="{% url 'detail' posts.id %}"> <span class="card-title" style="color:white;">{{ posts.title }}</span></a>
                                 {% if photo in posts.photo_set.all %}
                                 <img class="responsive-img card-panel" src="{{posts.photo.url}}">
                                 {% else %}
