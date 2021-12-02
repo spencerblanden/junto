@@ -1,5 +1,5 @@
 {% extends 'base.html' %} {% block content %}
-    <h1>About the Junto</h1>
+    <h1>Junto</h1>
     <hr />
     <div class="card-container">
         {% for post in posts %}
@@ -12,9 +12,13 @@
                         {% else %}
                         <img class="responsive-img card-panel" id="index-image" src="{{post.content}}">
                         {% endif %}
-                        <h5 ><a href="{% url 'profile_detail' post.user.id %}" style="color: white;">{{ post.user.username }}</a></h5>
+                        <a href="{% url 'profile_detail' post.user.id %}" style="color: white;">
+                            <span class="card-title" id="profileTitle">
+                                <h5>{{ post.user.username }}</h5>
+                                <h6 id="profileUsername">@{{ post.user.profile.name }}</h6>
+                            </span>
+                        </a>
                         <p>{{ post.description }}</p>
-                        
                     </div>
                 </a>
                 <form action="{% url 'like_post' post.pk %}" method='POST'>

@@ -30,7 +30,7 @@
           <ul class="right hide-on-med-and-down">
             {% if user.is_authenticated %}
             <li><a href="{% url 'index' %}">Junto</a></li>
-            <li><a href="{% url 'posts_create' %}">Add a Post</a></li>
+            <li><a href="{% url 'posts_create' %}">Add Post</a></li>
             <li><a href="{% url 'profile' %}">My Posts</a></li>
             <!-- {% if user.profile %} -->
             <li><a href="{% url 'profile_detail' user.id %}">My Profile</a></li>
@@ -50,7 +50,7 @@
   <ul class="sidenav right" id="mobile-demo">
     {% if user.is_authenticated %}
     <li><a href="{% url 'index' %}">Junto</a></li>
-    <li><a href="{% url 'posts_create' %}">Add a Post</a></li>
+    <li><a href="{% url 'posts_create' %}">Add Post</a></li>
     <li><a href="{% url 'profile' %}">My Posts</a></li>
     <li><a href="{% url 'profile_detail' user.id %}">My Profile</a></li>
     <li><a href="{% url 'logout' %}">Log Out</a></li>
