@@ -29,6 +29,12 @@ Google is great but sometimes googling just creates a mess. Where do you go when
 
 [Click here launch](https://thejunto.herokuapp.com/)
 
+## **Documentation**
+
+[Trello Board](https://trello.com/b/rDvxAOUJ/junto/)
+
+[Pitch Deck](https://docs.google.com/presentation/d/1Aawdz9yb2g9Fa2skT3bjJ85w1ceGtgJdpRgt9u0GG-0/edit#slide=id.p/)
+
 ## **Future Enchancements**
 
 
