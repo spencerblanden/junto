@@ -12,10 +12,6 @@ from django.urls import reverse_lazy
 from django.contrib.auth.models import User
 
 
-
-
-
-
 # Define the home view
 def home(request):
   return render(request, 'home.html')
@@ -92,7 +88,6 @@ def profile_detail(request, pk):
       'post' : post,
     })
 
-
 class PostCreate(LoginRequiredMixin, CreateView):
   model = Post
   fields = ['title', 'content', 'description']
@@ -120,9 +115,4 @@ class ProfileCreate(CreateView):
 class ProfileUpdate(UpdateView):
   model = Profile
   fields = ['name', 'avatar', 'bio']
-
-
-
-
-print('Hello World!')
 
