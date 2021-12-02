@@ -154,6 +154,8 @@ background-color:rgb(253, 253, 253);;
 
 .profileHeading {
   display: flex;
+  flex-direction: column;
+  width: 100%;
 }  
 
 .bio {
@@ -161,19 +163,40 @@ background-color:rgb(253, 253, 253);;
 }
 
 #profilePhoto {
-  width: 200px;
-  margin: 20px;
+  width: 150px;
+  margin: 0;
+  border-radius: 5%;
+  max-height: 200px;
+}
+
+.proPhotoMain {
+  display: flex;
+  justify-content: flex-end;
+}
+
+#profileUsername {
+  color: rgb(167, 166, 166);
 }
 
 #profileContainer {
   width: 100%;
+  margin-top: 30px;
+}
+
+#profileTitle {
+  margin-top: -35px;
+  line-height: 5px;
+  margin-bottom: 20px;
+}
+
+#editProfileButton {
+  color: rgb(186, 132, 86);
+  font-size: larger;
 }
 
 .homeTitle {
   display: flex;
 }
-
-
 
 @media only screen and (max-width: 700px) {
   .aboutInfo {
@@ -184,6 +207,9 @@ background-color:rgb(253, 253, 253);;
   }
   .homeTitle {
   justify-content: center;
+  }
+  #profileUsername {
+    font-size: 18px;
   }
 }
 
