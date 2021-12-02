@@ -61,4 +61,30 @@ Starting at the home page of our application you'll see the meaning behind Junto
 - Uploadable/downloadable images/files
 
 
+## **The Two and a Half Dads**
+
+### Spencer Blanden
+
+[LinkedIn](https://www.linkedin.com/in/spencer-blanden/)
+
+[GitHub](https://github.com/spencerblanden)
+- GitHub Manager
+- Database Manager
+
+
+### Lloyd Eddy
+[LinkedIn](https://www.linkedin.com/in/lloyd-eddy-6136705/)
+
+[GitHub](https://github.com/lloddy)
+- Scrum Master
+- Lead Designer
+
+
+### Anis Bile
+[LinkedIn](https://www.linkedin.com/in/anis-bile-baaa49216/)
+
+[GitHub](https://github.com/Anisbile)
+- Documenter
+- Lead Dev
+
 
