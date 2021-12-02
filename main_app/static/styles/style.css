@@ -96,16 +96,10 @@ background-color:rgb(253, 253, 253);;
   margin: 10px;
 }
 
-#oldLogo {
-  width: 250px;
-  border-radius: 50%;
-  height: fit-content;
-  margin: 20px;
-}
-
 .aboutInfo {
   padding: 15px;
   font-size: 18px;
+  max-width: 100%;
 }
 
 .about {
@@ -113,7 +107,15 @@ background-color:rgb(253, 253, 253);;
   flex-wrap: wrap;
   gap: 30px;
   justify-content: space-between;
+  height: 100%;
 
+}
+
+#oldLogo {
+  width: 100px;
+  border-radius: 50%;
+  height: fit-content;
+  margin: 20px;
 }
 
 .juntoPhrase {
@@ -127,7 +129,7 @@ background-color:rgb(253, 253, 253);;
 }
 
 .splashButton {
-  width: 100%;
+  max-width: 100%;
   margin: 20px;
   display: flex;
   flex-direction: column;
@@ -167,13 +169,32 @@ background-color:rgb(253, 253, 253);;
   width: 100%;
 }
 
-@media only screen and (max-width: 1172px) {
+.homeTitle {
+  display: flex;
+}
+
+
+
+@media only screen and (max-width: 700px) {
+  .aboutInfo {
+    font-size: 18px;
+  }
+  #oldLogo {
+    display: none;
+  }
+  .homeTitle {
+  justify-content: center;
+  }
+}
+
+@media only screen and (max-width: 500px) {
   .about {
     justify-content: center;
   }
-
-}
-
-@media only screen and (max-width: 700px) {
-
+  .aboutInfo {
+    font-size: 12px;
+  }
+  h1 {
+    font-size: 24px;
+  }
 }
