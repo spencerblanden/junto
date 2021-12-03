@@ -4,21 +4,25 @@
     <div class="card ">
         <div class="card-content" >
             <div class="profileHeading">
-                <span class="card-title"><h1>{{ profile.user.username }}</h1></span>
-                <img class="responsive-img" id="profilePhoto" src="{{profile.avatar}}">
+                <div class="proPhotoMain">
+                    <img class="responsive-img" id="profilePhoto" src="{{profile.avatar}}">    
+                </div>
+                <span class="card-title" id="profileTitle"><h1>{{ profile.name }}</h1>
+                <p id="profileUsername">@{{ profile.user.username }}</p></span>
             </div>
             <div class="card bio">
                 <h5>Bio:</h5>
                 <p>{{ profile.bio }}</p>
                 
             </div>
-                <a href="{% url 'profile_update' user.id %}" id="editDeletebtns">Edit</a>
+                <a href="{% url 'profile_update' user.id %}" id="editProfileButton">Edit Profile</a>
+                <hr />
             <div class="card-container">
                 {% for posts in post %}
                     <div class="card post-card">
 
                             <div class="card-content">
-                                <span class="card-title">{{ posts.title }}</span>
+                                <a href="{% url 'detail' posts.id %}"> <span class="card-title" style="color:white;">{{ posts.title }}</span></a>
                                 {% if photo in posts.photo_set.all %}
                                 <img class="responsive-img card-panel" src="{{posts.photo.url}}">
                                 {% else %}
@@ -31,7 +35,7 @@
                         <form action="{% url 'like_post' posts.pk %}" method='POST'>
                             {% csrf_token %}
                             <button type='submit' name='post_id' value='{{ posts.id }}' class='btn btn-primary btn-sm'>like</button>
-                            {{ post.total_likes }} - Likes 
+                            {{ posts.total_likes }} - Likes 
                         </form>
                     </div>
                 {% endfor %}
